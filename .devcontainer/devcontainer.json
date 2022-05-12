@@ -1,0 +1,17 @@
+{
+  "name": "${containerWorkspaceFolderBasename}",
+  "image": "thebearingedge/code-container",
+  "mounts": [
+    // mount ssh config
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/dev/.ssh,type=bind",
+    // mount git config
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/dev/.gitconfig,type=bind"
+  ],
+  "appPort": [],
+  "extensions": [
+    "thebearingedge.lfz-code"
+  ],
+  "remoteUser": "vscode",
+  "containerUser": "vscode",
+  "postCreateCommand": "sh .devcontainer/post-create-command.sh"
+}
